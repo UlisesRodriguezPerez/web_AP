@@ -1,0 +1,138 @@
+
+body {
+    font-family: sans-serif;
+    padding: 90px 20px 0;
+}
+
+/* HEADER */
+.header {
+    background-color: #04b099;
+    height: 70px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    justify-content: space-between;
+
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+/* NAV link */
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+/* logo */
+.logo {
+    font: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 70px;
+}
+
+/* nav menu */
+.nav-menu {
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+}
+
+/* nav menu items */
+.nav-menu-item {
+    font-size: 18px;
+    margin: 0px 10px;
+    line-height: 70px;
+    text-transform: uppercase;
+    width: max-content;
+}
+
+/* lin nav menu */
+.nav-menu-link {
+    padding: 8px 12px;
+    border-radius: 3px;
+    color: #000000;
+}
+
+
+/* hover */
+.nav-menu-link:hover,
+.nav-menu-link_active {
+    transition: 0.5s;
+    color: #FFF;
+}
+
+/* toggle */
+.nav-toggle {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 60px;
+    cursor: pointer;
+
+    display: none;
+}
+
+
+/* Responsive */
+@media (max-width: 1050px){
+    body {
+        padding-top: 70px;
+    }
+    
+    .header {
+        height: 60px;
+        z-index: 1;
+    }
+    
+    .logo {
+        font: 25px;
+        padding: 0 20px;
+        line-height: 60px;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
+        background-color:gray;
+        position: fixed;
+        left: 0;
+        top: 60px;
+        width: 100%;
+        padding: 20px 0;
+
+        height: calc(100% - 60px);
+        overflow-y: auto;
+
+        left: 100%;
+        transition: left 0.4s;
+    }
+    
+    .nav-menu-item {
+        line-height: 70px;
+    }
+    
+    .nav-menu-link:hover, 
+    .nav-menu-link_active {
+        background: none;
+        color:lightblue;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu_visible {
+        left: 0;
+    }
+}
