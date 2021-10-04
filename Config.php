@@ -21,11 +21,11 @@ class Config{
     
 // VARIABLES SEGÚN SISTEMA OPERATIVO.
 
-//     static $PATH = "PATH_INFO"; //WINDOWS
-    static $PATH = "REDIRECT_URL"; //LINUX
+     static $PATH = "PATH_INFO"; //WINDOWS
+//    static $PATH = "REDIRECT_URL"; //LINUX
 
-    static $INCLUDE = "Views/login/login.php"; //LINUX
-//     static $INCLUDE = "Views\login\login.php"; //WINDOWS
+//    static $INCLUDE = "Views/login/login.php"; //LINUX
+     static $INCLUDE = "Views\login\login.php"; //WINDOWS
 }
 
 
