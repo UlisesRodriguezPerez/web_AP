@@ -42,19 +42,25 @@
                 <input type="text" placeholder="hora fin" name="hora_fin" id="hora_fin" required>
             </div> <!-- end of input box -->
 
+            <!-- input box -->
+            <div class="input-box">
+                <!-- select -->
+                <span class="details">Grado</span>
+                <select class="select" name="grado_id" id="grado_id" required>
+                    <option class="select-option"selected value="">Seleccione un grado</option>
+
+                    <!-- cargamos todas las compañías disponibles. -->
+                    <?php if (isset($list_grados)) {
+                        foreach ($list_grados as $grado){ ?>
+                            <option value='<?php echo $grado->getId() ?>'> <?php echo $grado->getGrado()?></option>;
+                        <?php }
+                    } ?>
+                </select> <!-- end of select -->
+            </div> <!-- end of input box -->
+
         </div><!-- end of element details -->
 
-          <!-- select -->
-          <select class="select" name="grado_id" id="grado_id" required>
-              <option class="select-option"selected value="">Seleccione un grado</option>
 
-              <!-- cargamos todas las compañías disponibles. -->
-              <?php if (isset($list_grados)) {
-                  foreach ($list_grados as $grado){ ?>
-                      <option value='<?php echo $grado->getId() ?>'> <?php echo $grado->getGrado()?></option>;
-                  <?php }
-              } ?>
-          </select> <!-- end of select -->
 
 
         

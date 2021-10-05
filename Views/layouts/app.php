@@ -55,11 +55,16 @@
                     </li> <!-- end nav menu item -->
                 <?php } ?>
 
-                
-                <!-- nav menu item -->
-                <li class="nav-menu-item">
-                    <a href="/estudiante" class="nav-menu-link nav-link <?php if(getRouteName() == "estudiante") echo "nav-menu-link_active";?>">Estudiantes</a>
-                </li> <!-- end nav menu item -->
+
+                <?php
+                // SOLO EL ADMIN TIENE ESTE ACCESSO.
+                if ($_SESSION['user'] == 'administrador') { ?>
+                    <!-- nav menu item -->
+                    <li class="nav-menu-item">
+                        <a href="/estudiante" class="nav-menu-link nav-link <?php if(getRouteName() == "estudiante") echo "nav-menu-link_active";?>">Estudiantes</a>
+                    </li> <!-- end nav menu item -->
+                <?php } ?>
+
                 
                 <!-- nav menu item -->
                 <li class="nav-menu-item">

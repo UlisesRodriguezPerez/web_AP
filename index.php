@@ -25,7 +25,9 @@ $router->post('/curso/update', [CursosController::class, 'update']);
 $router->get('/curso/delete', [CursosController::class, 'delete']);
 $router->get('/curso/find', [CursosController::class, 'find']);
 $router->post('/curso/find', [CursosController::class, 'find']);
-$router->get('/curso/users', [CursosController::class, 'findUsers']);
+$router->get('/curso/asignar', [CursosController::class, 'asignar']);
+$router->post('/curso/asignar', [CursosController::class, 'asignar']);
+
 
 // docente
 $router->get('/docente', [DocenteController::class, 'index']);
@@ -36,6 +38,8 @@ $router->post('/docente/update', [DocenteController::class, 'update']);
 $router->get('/docente/delete', [DocenteController::class, 'delete']);
 $router->get('/docente/find', [DocenteController::class, 'find']);
 $router->post('/docente/find', [DocenteController::class, 'find']);
+$router->get('/docente/asignar', [DocenteController::class, 'asignarACurso']);
+$router->get('/docente/eliminarDeCurso', [DocenteController::class, 'eliminarDeCurso']);
 
 // estudiante
 $router->get('/estudiante', [EstudianteController::class, 'index']);
@@ -46,6 +50,8 @@ $router->post('/estudiante/update', [EstudianteController::class, 'update']);
 $router->get('/estudiante/delete', [EstudianteController::class, 'delete']);
 $router->get('/estudiante/find', [EstudianteController::class, 'find']);
 $router->post('/estudiante/find', [EstudianteController::class, 'find']);
+$router->get('/estudiante/asignar', [EstudianteController::class, 'asignarACurso']);
+$router->get('/estudiante/eliminarDeCurso', [EstudianteController::class, 'eliminarDeCurso']);
 
 // login
 $router->get('/login', [LoginController::class, 'login']);

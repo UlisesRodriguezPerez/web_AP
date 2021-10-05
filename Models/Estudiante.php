@@ -179,6 +179,102 @@ class Estudiante extends Usuario {
         }
     }
 
+    public static function estudiantesPorCurso($idCurso){
+        $list_estudiantes = [];
+        try{
+            // realiza a conexión con la DB.
+            $connection = DBConnection::createConnection();
+
+
+
+            // Prepara la consulta a la base de datos.
+            $sql = $connection->prepare('SELECT * FROM estudiantesporcurso(?)');
+            $sql->execute(array($idCurso));
+
+            foreach ($sql->fetchAll() as $estudiante){
+                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["password"],
+                    $estudiante["cedula"], $estudiante["correo"], $estudiante["rol_id"], $estudiante["idEstudiante"],
+                    $estudiante["ID"], $estudiante["grado"]);
+            }
+            return $list_estudiantes;
+
+        }catch(\Exception $ex){
+
+            $error = "Ha surgido un error al cargar los datos (eestudiantesPorCurso) vuelva a intentarlo.";
+
+            throw new \Exception($error);
+        }
+    }
+
+    public static function estudiantesSinAsignarEnCurso($idCurso){
+        $list_estudiantes = [];
+        try{
+            // realiza a conexión con la DB.
+            $connection = DBConnection::createConnection();
+
+
+
+            // Prepara la consulta a la base de datos.
+            $sql = $connection->prepare('SELECT * FROM estudiantessinasignarencurso(?)');
+            $sql->execute(array($idCurso));
+
+            foreach ($sql->fetchAll() as $estudiante){
+                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["password"],
+                    $estudiante["cedula"], $estudiante["correo"], $estudiante["rol_id"], $estudiante["idEstudiante"],
+                    $estudiante["ID"], $estudiante["grado"]);
+            }
+
+            return $list_estudiantes;
+
+        }catch(\Exception $ex){
+
+            $error = "Ha surgido un error al cargar los datos (estudiantesSinAsignarEnCurso) vuelva a intentarlo.";
+
+            throw new \Exception($error);
+        }
+    }
+
+    public static function asignarACurso($idEstudiante, $idCurso){
+        try{
+
+            $connection = DBConnection::createConnection();
+
+            $sql = $connection->prepare("CALL asignarestudiante(?,?)");
+
+
+            $sql->execute(array($idEstudiante, $idCurso));
+
+        }catch(\Exception $ex){
+
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
+
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
+
+    public static function eliminarDeCurso($idEstudiante, $idCurso){
+        try{
+
+            $connection = DBConnection::createConnection();
+            var_dump($idEstudiante);
+            var_dump($idCurso);
+            $sql = $connection->prepare("CALL eliminarestudiantecurso(?,?)");
+
+
+            $sql->execute(array($idEstudiante, $idCurso));
+
+        }catch(\Exception $ex){
+
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
+
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
+
 }
 
 ?>

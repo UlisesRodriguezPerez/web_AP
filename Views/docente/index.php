@@ -48,13 +48,14 @@
                         <!-- gruop -->
                         <div class="btn-group" role="group">
                             <a href="docente/find?id=<?php echo $docente->getId() ?>" class="btn green fas fa-eye"></a>
-                            <a href="docente/update?id=<?php echo $docente->getId() ?>" class="btn yellow fas fa-pen"></a>
+
                             
                             <?php 
                             // SOLO EL ADMIN TIENE ESTE ACCESSO.
                                 if ($_SESSION['user'] == 'administrador') { ?>
-                                    <!-- e btn delete llama una funciónd js para mostrar una alerta sobre si desea eliminar o no el elemento.-->
+                                    <a href="docente/update?id=<?php echo $docente->getId() ?>" class="btn yellow fas fa-pen"></a>
                                     <a href="docente/delete?id=<?php echo $docente->getIdDocente() ?>" class="btn red fas fa-trash" onclick="return confirmDelete('e','docente')" > </a>
+                                    <a href="docente/cursos?id=<?php echo $docente->getId() ?>" class="btn">Cursos (PENDIENTE)</a>
                             <?php } ?>
                         </div> <!-- end group -->
                     </td> <!-- end action -->

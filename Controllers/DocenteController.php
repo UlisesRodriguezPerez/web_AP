@@ -144,8 +144,15 @@ class DocenteController{
 
              // En caso de recibir POST, vuelve al index (btn Back).
              if($_POST){
-                 header("Location: /docente");
-                 exit;
+                 // SOLO EL ADMIN TIENE ESTE ACCESSO.
+                 if ($_SESSION['user'] == 'administrador') {
+                     header("Location: /docente");
+                     exit;
+                 }
+                 else{
+                     header("Location: /curso");
+                     exit;
+                 }
              }
 
              // Captura el id del elemento y lo envía al Model para proceder a la DB.
@@ -170,6 +177,56 @@ class DocenteController{
              header("Location: /docente");
          }
      }
+
+    public static function eliminarDeCurso(Router $router){
+        try{
+
+            $idDocente = $_GET['id'];
+            $idCurso = $_GET['idCurso'];
+//            var_dump($idCurso);
+
+            Docente::eliminarDeCurso($idDocente, $idCurso);
+            header("Location: /curso/find?id=$idCurso");
+
+
+        }catch (\Exception $ex){
+
+            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+            $error = $ex->getMessage();
+
+            // iniciamos el proceso session start para poder asignar la variable error.
+            session_start();
+            $_SESSION['error'] = $error;
+
+            // redirigimos a la vista index donde se mostrará el error ocurrido.
+            header("Location: /curso");
+        }
+    }
+
+    public static function asignarACurso(Router $router){
+//        try{
+
+            $idDocente = $_GET['id'];
+            $idCurso = $_GET['idCurso'];
+//            var_dump($idCurso);
+
+            Docente::asignarACurso($idDocente, $idCurso);
+            header("Location: /curso/asignar?id=$idCurso");
+
+//
+//        }catch (\Exception $ex){
+//
+//            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+//            $error = $ex->getMessage();
+//
+//            // iniciamos el proceso session start para poder asignar la variable error.
+//            session_start();
+//            $_SESSION['error'] = $error;
+//
+//            // redirigimos a la vista index donde se mostrará el error ocurrido.
+//            header("Location: /curso");
+//        }
+    }
 
 }
 

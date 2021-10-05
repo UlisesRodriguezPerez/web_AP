@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Curso;
 use App\Models\Grado;
+use App\Models\Estudiante;
+use App\Models\Docente;
 use App\Router;
 
 
@@ -162,18 +164,18 @@ class CursosController{
                 header("Location: /curso");
                 exit;
             }
-
+//            echo "LKBKBLK";
             // Captura el id del elemento y lo envía al Model para proceder a la DB.
             $id = $_GET['id'];
+            $cursoId = $id;
+            $list_estudiantes = Estudiante::estudiantesPorCurso($id);
+            $docente = Docente::docentePorCurso($id);
+//            var_dump($docente);
 
-            // Buscamos el elemento en la DB.
-            $curso = Curso::findCurso($id);
-            $idGrado = $curso->getId();
-            $gradoActual = Grado::findGrado ($idGrado);
+//            var_dump($list_estudiantes);
 
-//            var_dump($gradoActual->getId);
-            // enviamos la vista junto con los parámetros a utilizar.
-            $router->renderView("curso/find", ['curso'=>$curso, 'gradoActual'=>$gradoActual]);
+
+            $router->renderView("curso/find", ['list_estudiantes'=>$list_estudiantes, 'docente'=>$docente, 'cursoId'=>$cursoId]);
 
         }catch(\Exception $ex){
 
@@ -189,6 +191,42 @@ class CursosController{
         }
     }
 
+    public static function asignar(Router $router){
+        try{
+
+            // En caso de recibir POST, vuelve al index (btn Back).
+            if($_POST){
+
+                header("Location: /curso");
+                exit;
+            }
+//            echo "LKBKBLK";
+            // Captura el id del elemento y lo envía al Model para proceder a la DB.
+            $id = $_GET['id'];
+            $cursoId = $id;
+            $list_estudiantes = Estudiante::estudiantesSinAsignarEnCurso($id);
+            $list_docentes = Docente::allDocentes();
+            $docenteActual = Docente::docentePorCurso($cursoId);
+
+//            var_dump($docenteActual);
+
+
+            $router->renderView("curso/asignar", ['list_estudiantes'=>$list_estudiantes, 'list_docentes'=>$list_docentes,
+                                                'cursoId'=>$cursoId, 'docenteActual'=>$docenteActual]);
+
+        }catch(\Exception $ex){
+
+            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+            $error = $ex->getMessage();
+
+            // iniciamos el proceso session start para poder asignar la variable error.
+            session_start();
+            $_SESSION['error'] = $error;
+
+            // redirigimos a la vista index donde se mostrará el error ocurrido.
+            header("Location: /curso");
+        }
+    }
 }
 
 ?>

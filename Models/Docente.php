@@ -190,6 +190,80 @@ class Docente extends Usuario {
         }
     }
 
+    public static function docentePorCurso($cursoId){
+        try{
+            // realiza a conexión con la DB.
+            $connection = DBConnection::createConnection();
+
+            // Prepara la consulta a la base de datos.
+            $sql = $connection->prepare("SELECT * FROM docenteporcurso(?)");
+
+            // Se le indican los parámetros de la consulta.
+            $sql->execute(array($cursoId));
+
+            // Se crea un objeto formato Json
+            $docente = $sql->fetch();
+
+            // EN caso de no haber resultado en la base de datos, creamos un Docente vacío (PENDIENTE MEJORAR para no hacer esto)
+            if($docente == null)
+                return new Docente(null,null,null,null,null,null,null,null,null,null);
+
+            // Crea un objeto y lo retorna al controlador.
+            return new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["password"],
+                $docente["cedula"], $docente["correo"], $docente["rol_id"], $docente["idDocente"],
+                $docente["ID"], $docente["calificacion"]);
+
+        }catch(\Exception $ex){
+
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
+
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
+
+    public static function eliminarDeCurso($idDocente, $idCurso){
+        try{
+
+            $connection = DBConnection::createConnection();
+            var_dump($idDocente);
+            var_dump($idCurso);
+            $sql = $connection->prepare("CALL eliminardocentecurso(?,?)");
+
+
+            $sql->execute(array($idDocente, $idCurso));
+
+        }catch(\Exception $ex){
+
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
+
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
+
+    public static function asignarACurso($idDocente, $idCurso){
+        try{
+
+            $connection = DBConnection::createConnection();
+
+            $sql = $connection->prepare("CALL asignardocente(?,?)");
+
+
+            $sql->execute(array($idDocente, $idCurso));
+
+        }catch(\Exception $ex){
+
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
+
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
+
 }
 
 ?>

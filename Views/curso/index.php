@@ -63,7 +63,7 @@
                                         <!-- e btn delete llama una funciónd js para mostrar una alerta sobre si desea eliminar o no el elemento.-->
                                         <a href="curso/delete?id=<?php echo $curso->getId() ?>" class="btn red fas fa-trash" onclick="return confirmDelete('o','curso')" ></a>
 
-                                    <a href="#" class="btn ">Asignar</a>
+                                    <a href="curso/asignar?id=<?php echo $curso->getId() ?>" class="btn ">Asignar</a>
 
                             <?php } ?>
                             </div> <!-- end group -->
