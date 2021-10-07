@@ -11,9 +11,9 @@ class Docente extends Usuario {
     private $calificacion;
 
     // Contructor de la clase.
-    public function __construct($id, $nombre, $apellido, $password, $cedula, $correo, $rol_id, $idDocente, $usuarioId, $calificacion)
+    public function __construct($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $rol_id, $idDocente, $usuarioId, $calificacion)
     {
-        parent::__construct($id, $nombre, $apellido, $password, $cedula, $correo, $rol_id);
+        parent::__construct($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $rol_id);
 //        $this->id = $id;
 //        $this->nombre = $nombre;
 //        $this->apellido = $apellido;
@@ -52,16 +52,16 @@ class Docente extends Usuario {
     }
 
 //    // Recibe los valores del nuevo elemento y los envía a la DB para agregarlo.
-    public static function create($nombre, $apellido, $password, $cedula, $correo){
+    public static function create($nombre, $apellido, $segundoApellido, $password, $cedula, $correo){
         try{
             // realiza a conexión con la DB.
             $connection = DBConnection::createConnection();
 
             // Prepara la consulta a la base de datos.
-            $sql = $connection->prepare("CALL insertardocente(?, ?, ?, ?, ?)");
+            $sql = $connection->prepare("CALL insertardocente(?, ?, ?, ?, ?, ?)");
 
             // Se le indican los parámetros de la consulta.
-            $sql->execute(array($nombre, $apellido, $password, $cedula, $correo));
+            $sql->execute(array($nombre, $apellido, $segundoApellido, $password, $cedula, $correo));
 
         }catch(\Exception $ex){
 
@@ -100,7 +100,7 @@ class Docente extends Usuario {
 
 
             foreach ($sql->fetchAll() as $docente){
-                $list_docentes[] = new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["password"],
+                $list_docentes[] = new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["segundoApellido"], $docente["password"],
                                                 $docente["cedula"], $docente["correo"], $docente["rol_id"], $docente["idDocente"],
                                                 $docente["ID"], $docente["calificacion"]);
             }
@@ -154,7 +154,7 @@ class Docente extends Usuario {
             $docente = $sql->fetch();
 
             // Crea un objeto y lo retorna al controlador.
-            return new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["password"],
+            return new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["segundoApellido"], $docente["password"],
                                 $docente["cedula"], $docente["correo"], $docente["rol_id"], $docente["idDocente"],
                                 $docente["ID"], $docente["calificacion"]);
 
@@ -169,16 +169,16 @@ class Docente extends Usuario {
     }
 //
 //    // Recibe los nuevos valores de un elemento para enviarlos a la Db y actualizarlos.
-    public static function update($id, $nombre, $apellido, $password, $cedula, $correo){
+    public static function update($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo){
         try{
             // realiza a conexión con la DB.
             $connection = DBConnection::createConnection();
 
             // Prepara la consulta a la base de datos.
-            $sql = $connection->prepare("CALL actualizardocente(?, ?, ?, ?, ?, ?)");
+            $sql = $connection->prepare("CALL actualizardocente(?, ?, ?, ?, ?, ?, ?)");
 
             // Se le indican los parámetros de la consulta.
-            $sql->execute(array($id, $nombre, $apellido, $password, $cedula, $correo));
+            $sql->execute(array($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo));
 
         }catch(\Exception $ex){
 
@@ -206,10 +206,10 @@ class Docente extends Usuario {
 
             // EN caso de no haber resultado en la base de datos, creamos un Docente vacío (PENDIENTE MEJORAR para no hacer esto)
             if($docente == null)
-                return new Docente(null,null,null,null,null,null,null,null,null,null);
+                return new Docente(null,null,null,null,null,null,null,null,null,null,null);
 
             // Crea un objeto y lo retorna al controlador.
-            return new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["password"],
+            return new Docente($docente["ID"], $docente["nombre"], $docente["apellido"], $docente["segundoApellido"], $docente["password"],
                 $docente["cedula"], $docente["correo"], $docente["rol_id"], $docente["idDocente"],
                 $docente["ID"], $docente["calificacion"]);
 

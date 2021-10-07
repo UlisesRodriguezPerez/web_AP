@@ -22,6 +22,7 @@
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Segundo Apellido</th>
             <th>Cedula</th>
             <th>Correo</th>
             <th>Grado</th>
@@ -38,6 +39,7 @@
                 <tr>
                     <td data-label="Nombre"> <?php echo $estudiante->getNombre() ?> </td>
                     <td data-label="Apellido"> <?php echo $estudiante->getApellido() ?> </td>
+                    <td data-label="Segundo Apellido"> <?php echo $estudiante->getSegundoApellido() ?> </td>
                     <td data-label="Cedula"> <?php echo $estudiante->getCedula() ?> </td>
                     <td data-label="Correo"> <?php echo $estudiante->getCorreo() ?> </td>
                     <td data-label="Grado"> <?php echo $estudiante->getGrado() ?> </td>
@@ -55,7 +57,7 @@
                                 if ($_SESSION['user'] == 'administrador') { ?>
                                     <a href="estudiante/update?id=<?php echo $estudiante->getId() ?>" class="btn yellow fas fa-pen"></a>
                                     <a href="estudiante/delete?id=<?php echo $estudiante->getIdEstudiante() ?>" class="btn red fas fa-trash" onclick="return confirmDelete('e','estudiante')" > </a>
-                                    <a href="estudiante/cursos?id=<?php echo $estudiante->getId() ?>" class="btn">Cursos (PENDIENTE)</a>
+                                    <!-- <a href="estudiante/cursos?id=<?php echo $estudiante->getId() ?>" class="btn">Cursos (PENDIENTE)</a> -->
                             <?php } ?>
                         </div> <!-- end group -->
                     </td> <!-- end action -->

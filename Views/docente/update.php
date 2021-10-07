@@ -24,6 +24,12 @@
 
             <!-- input box -->
             <div class="input-box">
+                <span class="details">Segundo Apellido</span>
+                <input type="text" placeholder="Segundo apellido" value="<?php echo $docente->getSegundoApellido() ?>" name="segundoApellido" id="segundoApellido" required>
+            </div> <!-- end of input box -->
+
+            <!-- input box -->
+            <div class="input-box">
                 <span class="details">Password</span>
                 <input type="text" placeholder="ingrese la contraseña" value="<?php echo $docente->getPassword() ?>" name="password" id="password" required>
             </div> <!-- end of input box -->

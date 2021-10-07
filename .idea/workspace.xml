@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="939070ab-b65d-4f5b-8d65-2d44e2a85a90" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Views/curso/asignar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CursosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CursosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/DocenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/DocenteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/EstudianteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/EstudianteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Docente.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Docente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Estudiante.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Estudiante.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/curso/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/curso/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/curso/find.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/curso/find.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/curso/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/curso/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/docente/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/docente/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/estudiante/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/estudiante/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/layouts/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/layouts/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +69,9 @@
       <workItem from="1633281630778" duration="277000" />
       <workItem from="1633281929700" duration="5156000" />
       <workItem from="1633296052453" duration="236000" />
-      <workItem from="1633296308131" duration="40582000" />
+      <workItem from="1633296308131" duration="41176000" />
+      <workItem from="1633489267974" duration="78000" />
+      <workItem from="1633546131298" duration="595000" />
     </task>
     <servers />
   </component>

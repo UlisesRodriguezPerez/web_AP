@@ -9,17 +9,19 @@ class Usuario{
     private $id;
     private $nombre;
     private $apellido;
+    private $segundoApellido;
     private $password;
     private $cedula;
     private $correo;
     private $rol_id;
 
     // Contructor de la clase.
-    public function __construct($id, $nombre, $apellido, $password, $cedula, $correo, $rol_id)
+    public function __construct($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $rol_id)
     {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
+        $this->segundoApellido = $segundoApellido;
         $this->password = $password;
         $this->cedula = $cedula;
         $this->correo = $correo;
@@ -49,6 +51,14 @@ class Usuario{
     public function getApellido()
     {
         return $this->apellido;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSegundoApellido()
+    {
+        return $this->segundoApellido;
     }
 
     /**

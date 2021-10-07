@@ -22,6 +22,7 @@
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Segundo Apellido</th>
             <th>Cedula</th>
             <th>Correo</th>
             <th>Calificación</th>
@@ -38,6 +39,7 @@
                 <tr>
                     <td data-label="Nombre"> <?php echo $docente->getNombre() ?> </td>
                     <td data-label="Apellido"> <?php echo $docente->getApellido() ?> </td>
+                    <td data-label="Segundo Apellido"> <?php echo $docente->getSegundoApellido() ?> </td>
                     <td data-label="Cedula"> <?php echo $docente->getCedula() ?> </td>
                     <td data-label="Correo"> <?php echo $docente->getCorreo() ?> </td>
                     <td data-label="Calificación"> <?php echo $docente->getCalificacion() ?> </td>

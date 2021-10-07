@@ -42,12 +42,13 @@ class EstudianteController{
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];
                 $password = $_POST['password'];
+                $segundoApellido = $_POST['segundoApellido'];
                 $cedula = $_POST['cedula'];
                 $correo = $_POST['correo'];
                 $gradoId = $_POST['grado_id'];
 
 
-                Estudiante::create($nombre, $apellido, $password, $cedula, $correo, $gradoId);
+                Estudiante::create($nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId);
 
                 // finalmente volvemos a la vista index del elemento.
                 header("Location: /estudiante");
@@ -106,12 +107,13 @@ class EstudianteController{
                 $id = $_POST['id'];
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];
+                $segundoApellido = $_POST['segundoApellido'];
                 $password = $_POST['password'];
                 $cedula = $_POST['cedula'];
                 $correo = $_POST['correo'];
                 $gradoId = $_POST['grado_id'];
 
-                Estudiante::update($id, $nombre, $apellido, $password, $cedula, $correo, $gradoId);
+                Estudiante::update($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId);
 
                 // Después de actualizar redirecciona al index del elemento.
                 header("Location: /estudiante");

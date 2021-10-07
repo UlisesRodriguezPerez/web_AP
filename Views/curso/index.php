@@ -66,6 +66,7 @@
                                     <a href="curso/asignar?id=<?php echo $curso->getId() ?>" class="btn ">Asignar</a>
 
                             <?php } ?>
+                            <a href="noticia?id=<?php echo $curso->getId() ?>" class="btn ">Noticias</a>
                             </div> <!-- end group -->
                     </td> <!-- end action -->
                 </tr>

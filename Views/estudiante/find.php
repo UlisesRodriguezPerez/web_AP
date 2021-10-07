@@ -21,6 +21,12 @@
                 <span class="details">Apellido</span>
                 <input type="text" readonly value="<?php echo $estudiante->getApellido() ?>" name="apellido" id="apellido" required>
             </div> <!-- end of input box -->
+            
+            <!-- input box -->
+            <div class="input-box">
+                <span class="details">Segundo Apellido</span>
+                <input type="text" readonly value="<?php echo $estudiante->getSegundoApellido() ?>" name="segundoApellido" id="segundoApellido" required>
+            </div> <!-- end of input box -->
 
             <!-- input box -->
             <div class="input-box">

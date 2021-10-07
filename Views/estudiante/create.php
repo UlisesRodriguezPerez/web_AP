@@ -24,6 +24,12 @@
             <input type="text" placeholder="Enter last name" name="apellido" id="apellido" required>
           </div> <!-- end of input box -->
 
+          <!-- input box -->
+          <div class="input-box">
+            <span class="details">Segundo Apellido</span>
+            <input type="text" placeholder="Segundo apellido" name="segundoApellido" id="segundoApellido" required>
+          </div> <!-- end of input box -->
+
             <!-- input box -->
             <div class="input-box">
                 <span class="details">Password</span>

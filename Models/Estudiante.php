@@ -11,9 +11,9 @@ class Estudiante extends Usuario {
     private $grado;
 
     // Contructor de la clase.
-    public function __construct($id, $nombre, $apellido, $password, $cedula, $correo, $rol_id, $idEstudiante, $usuarioId, $grado)
+    public function __construct($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $rol_id, $idEstudiante, $usuarioId, $grado)
     {
-        parent::__construct($id, $nombre, $apellido, $password, $cedula, $correo, $rol_id);
+        parent::__construct($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $rol_id);
         $this->idEstudiante = $idEstudiante;
         $this->usuarioId = $usuarioId;
         $this->grado = $grado;
@@ -44,16 +44,16 @@ class Estudiante extends Usuario {
     }
 
 //    // Recibe los valores del nuevo elemento y los envía a la DB para agregarlo.
-    public static function create($nombre, $apellido, $password, $cedula, $correo, $gradoId){
+    public static function create($nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId){
         try{
             // realiza a conexión con la DB.
             $connection = DBConnection::createConnection();
 
             // Prepara la consulta a la base de datos.
-            $sql = $connection->prepare("CALL insertarestudiante(?, ?, ?, ?, ?, ?)");
+            $sql = $connection->prepare("CALL insertarestudiante(?, ?, ?, ?, ?, ?, ?)");
 
             // Se le indican los parámetros de la consulta.
-            $sql->execute(array($nombre, $apellido, $password, $cedula, $correo, $gradoId));
+            $sql->execute(array($nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId));
 
         }catch(\Exception $ex){
 
@@ -89,7 +89,7 @@ class Estudiante extends Usuario {
 
 
             foreach ($sql->fetchAll() as $estudiante){
-                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["password"],
+                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["segundoApellido"], $estudiante["password"],
                                                 $estudiante["cedula"], $estudiante["correo"], $estudiante["rol_id"], $estudiante["idEstudiante"],
                                                 $estudiante["ID"], $estudiante["grado"]);
             }
@@ -143,7 +143,7 @@ class Estudiante extends Usuario {
             $estudiante = $sql->fetch();
 
             // Crea un objeto y lo retorna al controlador.
-            return new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["password"],
+            return new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["segundoApellido"], $estudiante["password"],
                                 $estudiante["cedula"], $estudiante["correo"], $estudiante["rol_id"], $estudiante["idEstudiante"],
                                 $estudiante["ID"], $estudiante["grado"]);
 
@@ -158,16 +158,16 @@ class Estudiante extends Usuario {
     }
 //
 //    // Recibe los nuevos valores de un elemento para enviarlos a la Db y actualizarlos.
-    public static function update($id, $nombre, $apellido, $password, $cedula, $correo, $gradoId){
+    public static function update($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId){
         try{
             // realiza a conexión con la DB.
             $connection = DBConnection::createConnection();
 
             // Prepara la consulta a la base de datos.
-            $sql = $connection->prepare("CALL actualizarestudiante(?, ?, ?, ?, ?, ?, ?)");
+            $sql = $connection->prepare("CALL actualizarestudiante(?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se le indican los parámetros de la consulta.
-            $sql->execute(array($id, $nombre, $apellido, $password, $cedula, $correo, $gradoId));
+            $sql->execute(array($id, $nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId));
 
         }catch(\Exception $ex){
 
@@ -192,7 +192,7 @@ class Estudiante extends Usuario {
             $sql->execute(array($idCurso));
 
             foreach ($sql->fetchAll() as $estudiante){
-                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["password"],
+                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["segundoApellido"], $estudiante["password"],
                     $estudiante["cedula"], $estudiante["correo"], $estudiante["rol_id"], $estudiante["idEstudiante"],
                     $estudiante["ID"], $estudiante["grado"]);
             }
@@ -219,7 +219,7 @@ class Estudiante extends Usuario {
             $sql->execute(array($idCurso));
 
             foreach ($sql->fetchAll() as $estudiante){
-                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["password"],
+                $list_estudiantes[] = new Estudiante($estudiante["ID"], $estudiante["nombre"], $estudiante["apellido"], $estudiante["segundoApellido"], $estudiante["password"],
                     $estudiante["cedula"], $estudiante["correo"], $estudiante["rol_id"], $estudiante["idEstudiante"],
                     $estudiante["ID"], $estudiante["grado"]);
             }

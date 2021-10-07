@@ -13,6 +13,15 @@
     <title>Test</title>
 
     <!-- importamos los estilos -->
+
+    <!-- NOTICIAs -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    ---- Include the above in your HEAD tag -------- -->
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/../css/noticias.css">
     <link rel="stylesheet" type="text/css" href="/../css/styles.css">
     <link rel="stylesheet" type="text/css" href="/../css/header.css">
     <link rel="stylesheet" type="text/css" href="/../css/form.css">
@@ -24,6 +33,9 @@
 
     <!-- Para el icono de menu (responsive) -->
     <script src="https://kit.fontawesome.com/1691e7b94a.js" crossorigin="anonymous"></script>
+
+    
+
 </head> <!-- end of head -->
 
 <!-- body -->
