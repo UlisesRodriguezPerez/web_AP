@@ -97,28 +97,26 @@ class Noticia{
     }
 
     // // Recibe los valores del nuevo elemento y los envía a la DB para agregarlo.
-    // public static function create($codigo, $nombre, $grado, $dia_semana, $hora_inicio,  $hora_fin){
-    //     try{
-    //         // realiza a conexión con la DB.
-    //         $connection = DBConnection::createConnection();
+    public static function create($titulo, $descripcion, $cursoId, $fecha){
+        try{
+            // realiza a conexión con la DB.
+            $connection = DBConnection::createConnection();
 
-    //         // Prepara la consulta a la base de datos.
-    //         $sql = $connection->prepare("SELECT insertarnoticia(?, ?, ?, ?, ?, ?)");
+            // Prepara la consulta a la base de datos.
+            $sql = $connection->prepare("CALL insertarnoticia(?, ?, ?, ?)");
 
-    //         // Se le indican los parámetros de la consulta.
-    //         $sql->execute(array($codigo, $nombre, $grado, $dia_semana, $hora_inicio,  $hora_fin));
+            // Se le indican los parámetros de la consulta.
+            $sql->execute(array($titulo, $descripcion, $cursoId, $fecha));
 
-    //     }catch(\Exception $ex){
+        }catch(\Exception $ex){
 
-    //         //En caso de surgir algún problema, captura el error dado por la base de datos (en caso de ser ahí el problema).
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
 
-    //         // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
-    //         $error = explode("$", $ex->getMessage());
-
-    //         // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
-    //         throw new \Exception($error[1]);
-    //     }
-    // }
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
 
     // Solicita todos los elementos a la base de datos.
     // public static function findNoticia($cursoId){

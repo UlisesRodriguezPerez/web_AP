@@ -10,6 +10,11 @@
     <div class="container-noticia mb-5">
         <h4>Noticias</h4>
     </div>
+    <?php 
+    // SOLO EL ADMIN TIENE ESTE ACCESSO.
+        if ($_SESSION['user'] == 'profesor' || $_SESSION['user'] == 'administrador') { ?>
+            <a name="newNoticia" id="newNoticia" class="btn new-btn green-blue" href="noticia/create?id=<?php echo $cursoId?>" role="button">New</a>
+    <?php } ?>
     <!-- <div class="alert alert-success" role="alert">
         <div class="container-noticia">
             <div class="alert-icon">

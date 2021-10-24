@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Curso;
 use App\Models\Noticia;
 use App\Models\Grado;
 use App\Models\Estudiante;
@@ -19,9 +20,10 @@ class NoticiaController{
                 exit;
             }
             $cursoId = $_GET['id'];
+            // $cursoActual = Curso::findCurso($cursoId);
             $list_noticias = Noticia::findNoticia($cursoId);
 
-            $router->renderView("noticia/index", ['list_noticias'=>$list_noticias]);
+            $router->renderView("noticia/index", ['list_noticias'=>$list_noticias, 'cursoId' => $cursoId]);
             // var_dump($list_noticias);
 
         } catch (\Exception $ex) {
@@ -39,46 +41,48 @@ class NoticiaController{
     }
 
 //     // La función create obtiene todos los valores del formulario.
-//     public static function create(Router $router){
-//         try{
-//             // En caso de recibir un POST obtiene los valores del formulario y los envía al Model.
-//             if($_SERVER["REQUEST_METHOD"] === "POST"){
+    public static function create(Router $router){
+        try{
+            // En caso de recibir un POST obtiene los valores del formulario y los envía al Model.
+            if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-//                 $nombre = $_POST['name'];
-//                 $codigo = $_POST['code'];
-//                 $gradoId = $_POST['grado_id'];
-//                 $horaInicio = $_POST['hora_inicio'];
-//                 $horaFin = $_POST['hora_fin'];
-//                 $diaSemama = $_POST['dia_semana'];
+                $titulo = $_POST['titulo'];
+                $desciption = $_POST['description'];
+                $cursoId = $_POST['curso_id'];
+                $fecha = $_POST['fecha'];
+                // var_dump($titulo);
+                // echo $desciption;
+                // echo $cursoId;
+                // echo $fecha;
+                Noticia::create($titulo, $desciption, $cursoId, $fecha);
 
-// //                echo $codigo, $nombre, $gradoId, $diaSemama, $horaInicio,  $horaFin;
-//                 // Una vez almacenados los valores en variables, se le pasa al Model función create para registrar el nuevo elemento a la DB.
-//                 Noticia::create($codigo, $nombre, $gradoId, $diaSemama, $horaInicio,  $horaFin);
+                // finalmente volvemos a la vista index del elemento.
+                header("Location: /noticia?id=$cursoId");
+                exit;
 
-//                 // finalmente volvemos a la vista index del elemento.
-//                 header("Location: /noticia");
-//                 exit;
+            }
+            // $list_cursos = Curso::allCursos();
+            // $id = $_GET['id'];
+            $cursoId = $_GET['id'];
+            // var_dump($cursoId);
+            $cursoActual = Curso::findCurso($cursoId);
 
-//             }
-//             $list_grados = Grado::allGrados();
-// //            var_dump($list_grados);
+            // llamamos a la función renderView quien recibe una vista y parámetros a utilizar en la vista.
+            $router->renderView("/noticia/create", ['cursoActual' => $cursoActual]);
 
-//             // llamamos a la función renderView quien recibe una vista y parámetros a utilizar en la vista.
-//             $router->renderView("/noticia/create", ['list_grados' => $list_grados]);
+        }catch (\Exception $ex){
 
-//         }catch (\Exception $ex){
+            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+            $error = $ex->getMessage();
 
-//             // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
-//             $error = $ex->getMessage();
+            // iniciamos el proceso session start para poder asignar la variable error.
+            session_start();
+            $_SESSION['error'] = $error;
 
-//             // iniciamos el proceso session start para poder asignar la variable error.
-//             session_start();
-//             $_SESSION['error'] = $error;
-
-//             // redirigimos a la vista index donde se mostrará el error ocurrido.
-//             header("Location: /noticia");
-//         }
-//     }
+            // redirigimos a la vista index donde se mostrará el error ocurrido.
+            header("Location: /curso");
+        }
+    }
 
 
 //     public static function delete(){
@@ -196,42 +200,6 @@ class NoticiaController{
 //         }
 //     }
 
-//     public static function asignar(Router $router){
-//         try{
-
-//             // En caso de recibir POST, vuelve al index (btn Back).
-//             if($_POST){
-
-//                 header("Location: /noticia");
-//                 exit;
-//             }
-// //            echo "LKBKBLK";
-//             // Captura el id del elemento y lo envía al Model para proceder a la DB.
-//             $id = $_GET['id'];
-//             $noticiaId = $id;
-//             $list_estudiantes = Estudiante::estudiantesSinAsignarEnNoticia($id);
-//             $list_docentes = Docente::allDocentes();
-//             $docenteActual = Docente::docentePorNoticia($noticiaId);
-
-// //            var_dump($docenteActual);
-
-
-//             $router->renderView("noticia/asignar", ['list_estudiantes'=>$list_estudiantes, 'list_docentes'=>$list_docentes,
-//                                                 'noticiaId'=>$noticiaId, 'docenteActual'=>$docenteActual]);
-
-//         }catch(\Exception $ex){
-
-//             // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
-//             $error = $ex->getMessage();
-
-//             // iniciamos el proceso session start para poder asignar la variable error.
-//             session_start();
-//             $_SESSION['error'] = $error;
-
-//             // redirigimos a la vista index donde se mostrará el error ocurrido.
-//             header("Location: /noticia");
-//         }
-//     }
 }
 
 ?>

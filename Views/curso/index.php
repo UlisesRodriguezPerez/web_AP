@@ -67,6 +67,7 @@
 
                             <?php } ?>
                             <a href="noticia?id=<?php echo $curso->getId() ?>" class="btn ">Noticias</a>
+                            <a href="tarea?id=<?php echo $curso->getId() ?>" class="btn ">Tareas</a>
                             </div> <!-- end group -->
                     </td> <!-- end action -->
                 </tr>

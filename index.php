@@ -8,6 +8,7 @@ use App\Controllers\CursosController;
 use App\Controllers\DocenteController;
 use App\Controllers\EstudianteController;
 use App\Controllers\NoticiaController;
+use App\Controllers\TareaController;
 use App\Controllers\LoginController;
 
 $router = new Router();
@@ -38,6 +39,16 @@ $router->post('/noticia/update', [NoticiaController::class, 'update']);
 $router->get('/noticia/delete', [NoticiaController::class, 'delete']);
 $router->get('/noticia/find', [NoticiaController::class, 'find']);
 $router->post('/noticia/find', [NoticiaController::class, 'find']);
+
+// tarea
+$router->get('/tarea', [TareaController::class, 'index']);
+$router->get('/tarea/create', [TareaController::class, 'create']);
+$router->post('/tarea/create', [TareaController::class, 'create']);
+$router->get('/tarea/update', [TareaController::class, 'update']);
+$router->post('/tarea/update', [TareaController::class, 'update']);
+$router->get('/tarea/delete', [TareaController::class, 'delete']);
+$router->get('/tarea/find', [TareaController::class, 'find']);
+$router->post('/tarea/find', [TareaController::class, 'find']);
 
 // docente
 $router->get('/docente', [DocenteController::class, 'index']);
