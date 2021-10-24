@@ -57,7 +57,7 @@
                                 if ($_SESSION['user'] == 'administrador') { ?>
                                     <a href="docente/update?id=<?php echo $docente->getId() ?>" class="btn yellow fas fa-pen"></a>
                                     <a href="docente/delete?id=<?php echo $docente->getIdDocente() ?>" class="btn red fas fa-trash" onclick="return confirmDelete('e','docente')" > </a>
-                                    <a href="docente/cursos?id=<?php echo $docente->getId() ?>" class="btn">Cursos (PENDIENTE)</a>
+                                    <!-- <a href="docente/cursos?id=<?php echo $docente->getId() ?>" class="btn">Cursos (PENDIENTE)</a> -->
                             <?php } ?>
                         </div> <!-- end group -->
                     </td> <!-- end action -->

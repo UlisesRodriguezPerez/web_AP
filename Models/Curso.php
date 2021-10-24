@@ -151,15 +151,7 @@ class Curso{
                 $list_cursos[] = new Curso($curso["ID"], $curso["nombre"], $curso["gradoId"], $curso["horaInicio"],
                     $curso["codigo"], $curso["horaFin"], $curso["diaSemana"]);
             }
-//            $id, $nombre, $gradoId, $horaInicio, $codigo, $horaFin, $diaSemama
-            // Se usó este método ya que se comprobó que es más rápido que el de arriba.
-//            $list_cursos = $sql->fetchAll(\PDO::FETCH_ASSOC);
-//            var_dump($list_cursos);
-//            if(isset($list_cursos)) {
-//                throw new \Exception("El usuario no posee cursos");
-//            }
-            // Lista de objetos.
-//            echo $list_cursos;
+
             return $list_cursos;
 
         }catch(\Exception $ex){

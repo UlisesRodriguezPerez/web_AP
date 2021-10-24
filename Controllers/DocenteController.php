@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Docente;
+use App\Models\Curso;
 use App\Router;
 
 
@@ -206,7 +207,7 @@ class DocenteController{
     }
 
     public static function asignarACurso(Router $router){
-//        try{
+       try{
 
             $idDocente = $_GET['id'];
             $idCurso = $_GET['idCurso'];
@@ -216,19 +217,42 @@ class DocenteController{
             header("Location: /curso/asignar?id=$idCurso");
 
 //
-//        }catch (\Exception $ex){
-//
-//            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
-//            $error = $ex->getMessage();
-//
-//            // iniciamos el proceso session start para poder asignar la variable error.
-//            session_start();
-//            $_SESSION['error'] = $error;
-//
-//            // redirigimos a la vista index donde se mostrará el error ocurrido.
-//            header("Location: /curso");
-//        }
+       }catch (\Exception $ex){
+
+           // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+           $error = $ex->getMessage();
+
+           // iniciamos el proceso session start para poder asignar la variable error.
+           session_start();
+           $_SESSION['error'] = $error;
+
+           // redirigimos a la vista index donde se mostrará el error ocurrido.
+           header("Location: /curso");
+       }
     }
+
+        // Vista principal del elemento.
+        // public static function cursos(Router $router){
+        //     try{
+    
+        //         // Obtenemos todos los elementos desde el Model para después mostrarlos en la vista (table).
+        //         $list_cursos = Curso::allCursos();
+        //         $router->renderView("/curso/index", ['list_cursos' => $list_cursos]);
+    
+        //     } catch (\Exception $ex) {
+    
+        //         // Se recibe el error y se envía a la vista.
+        //         $error = $ex->getMessage();
+    
+        //         // iniciamos el proceso session para poder asignar la variables error y verificar en la vista.
+        //         session_start();
+        //         $_SESSION['error'] = $error;
+    
+        //         // redirecionamosa la vista principal.
+        //         header("Location: /");
+        //     }
+        // }
+    
 
 }
 

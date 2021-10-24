@@ -9,6 +9,7 @@ use App\Controllers\DocenteController;
 use App\Controllers\EstudianteController;
 use App\Controllers\NoticiaController;
 use App\Controllers\TareaController;
+use App\Controllers\ChatController;
 use App\Controllers\LoginController;
 
 $router = new Router();
@@ -40,6 +41,16 @@ $router->get('/noticia/delete', [NoticiaController::class, 'delete']);
 $router->get('/noticia/find', [NoticiaController::class, 'find']);
 $router->post('/noticia/find', [NoticiaController::class, 'find']);
 
+// chat
+$router->get('/chat', [ChatController::class, 'index']);
+$router->get('/chat/create', [ChatController::class, 'create']);
+$router->post('/chat/create', [ChatController::class, 'create']);
+$router->get('/chat/update', [ChatController::class, 'update']);
+$router->post('/chat/update', [ChatController::class, 'update']);
+$router->get('/chat/delete', [ChatController::class, 'delete']);
+$router->get('/chat/find', [ChatController::class, 'find']);
+$router->post('/chat/find', [ChatController::class, 'find']);
+
 // tarea
 $router->get('/tarea', [TareaController::class, 'index']);
 $router->get('/tarea/create', [TareaController::class, 'create']);
@@ -61,6 +72,7 @@ $router->get('/docente/find', [DocenteController::class, 'find']);
 $router->post('/docente/find', [DocenteController::class, 'find']);
 $router->get('/docente/asignar', [DocenteController::class, 'asignarACurso']);
 $router->get('/docente/eliminarDeCurso', [DocenteController::class, 'eliminarDeCurso']);
+// $router->get('/docente/cursos', [DocenteController::class, 'cursos']);
 
 // estudiante
 $router->get('/estudiante', [EstudianteController::class, 'index']);

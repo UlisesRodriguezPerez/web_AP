@@ -13,6 +13,11 @@
     <title>Test</title>
 
     <!-- importamos los estilos -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <!-- NOTICIAs -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -22,9 +27,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/../css/noticias.css">
+    <link rel="stylesheet" type="text/css" href="/../css/chat.css">
     <link rel="stylesheet" type="text/css" href="/../css/styles.css">
     <link rel="stylesheet" type="text/css" href="/../css/header.css">
     <link rel="stylesheet" type="text/css" href="/../css/form.css">
+    
     
 
     <!-- importamos los js con el atributo defer para que se carguen después del todo. -->
