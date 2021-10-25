@@ -264,6 +264,26 @@ class Docente extends Usuario {
         }
     }
 
+    public static function calificar($idDocente, $calificacion){
+        try{
+
+            $connection = DBConnection::createConnection();
+
+            $sql = $connection->prepare("CALL calificardocente(?,?)");
+
+
+            $sql->execute(array($idDocente, $calificacion));
+
+        }catch(\Exception $ex){
+
+            // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+            $error = explode("$", $ex->getMessage());
+
+            // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+            throw new \Exception($error[1]);
+        }
+    }
+
 }
 
 ?>

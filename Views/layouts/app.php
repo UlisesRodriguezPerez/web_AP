@@ -28,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/../css/noticias.css">
     <link rel="stylesheet" type="text/css" href="/../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="/../css/calificacion.css">
     <link rel="stylesheet" type="text/css" href="/../css/styles.css">
     <link rel="stylesheet" type="text/css" href="/../css/header.css">
     <link rel="stylesheet" type="text/css" href="/../css/form.css">

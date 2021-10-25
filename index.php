@@ -83,6 +83,7 @@ $router->get('/docente/find', [DocenteController::class, 'find']);
 $router->post('/docente/find', [DocenteController::class, 'find']);
 $router->get('/docente/asignar', [DocenteController::class, 'asignarACurso']);
 $router->post('/docente/asignar', [DocenteController::class, 'asignarACurso']);
+$router->post('/docente/calificar', [DocenteController::class, 'calificar']);
 $router->get('/docente/eliminarDeCurso', [DocenteController::class, 'eliminarDeCurso']);
 // $router->get('/docente/cursos', [DocenteController::class, 'cursos']);
 

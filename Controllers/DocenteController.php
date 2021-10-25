@@ -232,6 +232,33 @@ class DocenteController{
        }
     }
 
+    public static function calificar(Router $router){
+        try{
+             if($_POST){
+                 $idDocente = $_POST['profesorId'];
+                 $calificacion = $_POST['calificacion'];
+                 $cursoId = $_POST['cursoId'];
+                 var_dump($idDocente, $calificacion);
+                 Docente::calificar($idDocente, $calificacion);
+                 header("Location: /curso/find?id=$cursoId");
+                 exit;
+             }
+                 
+ 
+        }catch (\Exception $ex){
+ 
+            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+            $error = $ex->getMessage();
+ 
+            // iniciamos el proceso session start para poder asignar la variable error.
+            session_start();
+            $_SESSION['error'] = $error;
+ 
+            // redirigimos a la vista index donde se mostrará el error ocurrido.
+            header("Location: /curso");
+        }
+     }
+
         // Vista principal del elemento.
         // public static function cursos(Router $router){
         //     try{

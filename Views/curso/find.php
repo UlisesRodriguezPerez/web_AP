@@ -6,7 +6,7 @@
     <!-- content -->
     <div class="content">
 
-      <form action="/curso/find" method="post">
+      
 
           <div><h2>Profesor</h2></div>
           <!-- table -->
@@ -53,6 +53,40 @@
               </tbody> <!-- end body -->
           </table> <!-- end table -->
 
+        <form action="/docente/calificar" method="post">
+            <!-- element details -->
+            <div class="element-details">
+                <!-- input box -->
+                <div class="input-box">
+                     <span class="details"><strong>Calificación</strong></span>
+                    <!-- <input type="number" min="0" max="5"  name="calificacion" id="calificacion" value="0" > -->
+                </div> <!-- end of input box -->
+                <!-- input box -->
+                <div class="input-box">
+                    <!-- <span class="details">Calificación</span> -->
+                    <!-- <input type="number" min="0" max="5"  name="calificacion" id="calificacion" value="0" > -->
+                    <p class="clasificacion">
+                           <input id="radio1" type="radio" name="calificacion" value="5" ><!--
+                        --><label for="radio1">★</label><!--
+                        --><input id="radio2" type="radio" name="calificacion" value="4"><!--
+                        --><label for="radio2">★</label><!--
+                        --><input id="radio3" type="radio" name="calificacion" value="3"><!--
+                        --><label for="radio3">★</label><!--
+                        --><input id="radio4" type="radio" name="calificacion" value="2"><!--
+                        --><label for="radio4">★</label><!--
+                        --><input id="radio5" type="radio" name="calificacion" value="1"><!--
+                        --><label for="radio5">★</label>
+                    </p>
+                    <input type="text" name="profesorId" id="profesorId" value="<?php echo $docente->getIdDocente() ?>" style="display: none;">
+                    <input type="text" name="cursoId" id="profcursoIdesorId" value="<?php echo $cursoId ?>" style="display: none;">
+                </div> <!-- end of input box -->
+            </div><!-- end of element details -->
+                
+            <div class="button">
+                <input type="submit" value="Calificar">
+                <!-- <a href="/curso">BACK Provisional</a> -->
+            </div>
+          </form> <!-- enf of form -->
           <div><h2>Estudiantes</h2></div>
           <!-- table -->
           <table class="table">
@@ -98,10 +132,10 @@
           </table> <!-- end table -->
 
           <div class="button">
-            <input type="submit" value="Back">
-              <a href="/curso">BACK Provisional</a>
+            <!-- <input type="submit" value="Back"> -->
+              <a href="/curso" class="btn btn-cancel grey">BACK</a>
           </div>
         
-      </form> <!-- enf of form -->
+      
     </div> <!-- end of content -->
 <!-- </div> end of container -->
