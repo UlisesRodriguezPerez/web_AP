@@ -10,6 +10,7 @@ use App\Controllers\EstudianteController;
 use App\Controllers\NoticiaController;
 use App\Controllers\TareaController;
 use App\Controllers\ChatController;
+use App\Controllers\MensajeController;
 use App\Controllers\LoginController;
 
 $router = new Router();
@@ -50,6 +51,16 @@ $router->post('/chat/update', [ChatController::class, 'update']);
 $router->get('/chat/delete', [ChatController::class, 'delete']);
 $router->get('/chat/find', [ChatController::class, 'find']);
 $router->post('/chat/find', [ChatController::class, 'find']);
+
+// chat
+$router->get('/mensaje', [MensajeController::class, 'index']);
+$router->get('/mensaje/create', [MensajeController::class, 'create']);
+$router->post('/mensaje/create', [MensajeController::class, 'create']);
+$router->get('/mensaje/update', [MensajeController::class, 'update']);
+$router->post('/mensaje/update', [MensajeController::class, 'update']);
+$router->get('/mensaje/delete', [MensajeController::class, 'delete']);
+$router->get('/mensaje/find', [MensajeController::class, 'find']);
+$router->post('/mensaje/find', [MensajeController::class, 'find']);
 
 // tarea
 $router->get('/tarea', [TareaController::class, 'index']);

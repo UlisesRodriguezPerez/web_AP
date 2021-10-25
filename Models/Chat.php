@@ -7,21 +7,14 @@ use App\DBConnection;
 class Chat{
     // Atributos de la clase.
     private $id;
-    private $titulo;
-    private $descripcion;
     private $cursoId;
-    private $fecha;
-
 
 
     // Contructor de la clase.
-    public function __construct($id, $titulo, $descripcion, $cursoId, $fecha)
+    public function __construct($id, $cursoId)
     {
         $this->id = $id;
-        $this->titulo = $titulo;
-        $this->descripcion = $descripcion;
         $this->cursoId = $cursoId;
-        $this->fecha = $fecha;
     }
 
     /**
@@ -35,34 +28,11 @@ class Chat{
     /**
      * @return mixed
      */
-    public function getTitulo()
-    {
-        return $this->titulo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCursoId()
     {
         return $this->cursoId;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
 
     // Busca un elemento en específico con el id.
     public static function findChat($idCurso){
@@ -72,7 +42,7 @@ class Chat{
             $connection = DBConnection::createConnection();
 
             // Prepara la consulta a la base de datos.
-            $sql = $connection->prepare("SELECT * FROM buscarchats(?)");
+            $sql = $connection->prepare("SELECT * FROM buscarchat(?)");
 
             // Se le indican los parámetros de la consulta.
             $sql->execute(array($idCurso));
@@ -81,10 +51,11 @@ class Chat{
             // $chat = $sql->fetch();
 
             foreach ($sql->fetchAll() as $chat){
-                $list_chats[] = new Chat($chat["id"], $chat["titulo"], $chat["descripcion"], $chat["cursoid"], $chat["fecha"]);
+                $list_chats[] = new Chat($chat["ID"], $chat["cursoId"]);
             }
+            // var_dump($idCurso);
             // Crea un objeto y lo retorna al controlador.
-            return $list_chats;
+            return $list_chats[0];
 
         }catch(\Exception $ex){
 

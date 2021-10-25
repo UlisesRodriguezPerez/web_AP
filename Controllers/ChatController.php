@@ -24,9 +24,13 @@ class ChatController{
             // $chatId = $id;
             
             $list_mensajes = Mensaje::findMensajes($cursoId);
+            $chatId = Chat::findChat($cursoId);
+            // var_dump($chatId);
+            $chatId = $chatId->getId();
+            // var_dump($chatId);
             // var_dump($list_mensajes);
 
-            $router->renderView("chat/index", ['list_mensajes'=>$list_mensajes, 'cursoId'=>$cursoId]);
+            $router->renderView("chat/index", ['list_mensajes'=>$list_mensajes, 'cursoId'=>$cursoId, 'chatId'=>$chatId]);
         } catch (\Exception $ex) {
 
             // Se recibe el error y se envía a la vista.

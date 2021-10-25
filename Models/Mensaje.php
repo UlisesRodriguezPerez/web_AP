@@ -88,7 +88,7 @@ class Mensaje{
     }
 
     // // Recibe los valores del nuevo elemento y los envía a la DB para agregarlo.
-    public static function create($titulo, $descripcion, $cursoId){
+    public static function create($texto, $chatId, $usuarioId){
         try{
             // realiza a conexión con la DB.
             $connection = DBConnection::createConnection();
@@ -97,7 +97,7 @@ class Mensaje{
             $sql = $connection->prepare("CALL insertarmensaje(?, ?, ?)");
 
             // Se le indican los parámetros de la consulta.
-            $sql->execute(array($titulo, $descripcion, $cursoId));
+            $sql->execute(array($texto, $chatId, $usuarioId));
 
         }catch(\Exception $ex){
 

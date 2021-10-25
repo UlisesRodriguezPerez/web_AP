@@ -43,9 +43,25 @@
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
                     </div>
-                    <div class="publisher bt-1 border-light"> <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."> 
-                    <input class="publisher-input" type="text" placeholder="Escriba un mensaje"> 
-                    <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a> </div>
+                          <!-- form -->
+                        <form action="/mensaje/create" method="post">
+                            <div class="publisher bt-1 border-light"> 
+                                <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="..."> 
+                                <input class="publisher-input" type="text" placeholder="Escriba un mensaje" name="texto" id="texto"> 
+                                <input class="publisher-input" type="text" value="<?php echo $chatId ?>" name="chatId" id="chatId" style="display: none"> 
+                                <input class="publisher-input" type="text" value="<?php echo $cursoId ?>" name="cursoId" id="cursoId" style="display: none"> 
+                                <input class="publisher-input" type="text" value="<?php echo $_SESSION['user_id'] ?>" name="usuarioId" id="usuarioId" style="display: none"> 
+                                <!-- <a class="publisher-btn text-info" href="#" data-abc="true"> -->
+                                    <!-- <i class="fa fa-paper-plane"></i></a>  -->
+                            </div>
+
+                            <div class="button">
+                            <input type="submit" value="ENVIAR">
+                            <a href="/curso" class="btn btn-cancel grey">CANCEL</a>
+                            </div>
+
+                        </form> <!-- end of form -->
+                        
                 </div>
             </div>
         </div>

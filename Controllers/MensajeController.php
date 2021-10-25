@@ -46,29 +46,26 @@ class MensajeController{
             // En caso de recibir un POST obtiene los valores del formulario y los envía al Model.
             if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-                $titulo = $_POST['titulo'];
-                $desciption = $_POST['description'];
-                $cursoId = $_POST['curso_id'];
-                $fecha = $_POST['fecha'];
-                // var_dump($titulo);
-                // echo $desciption;
-                // echo $cursoId;
-                // echo $fecha;
-                Mensaje::create($titulo, $desciption, $cursoId, $fecha);
+                $texto = $_POST['texto'];
+                $chatId = $_POST['chatId'];
+                $usuraioId = $_POST['usuarioId'];
+                $cursoId = $_POST['cursoId'];
+
+                Mensaje::create($texto, $chatId, $usuraioId);
 
                 // finalmente volvemos a la vista index del elemento.
-                header("Location: /mensaje?id=$cursoId");
+                header("Location: /chat?id=$cursoId");
                 exit;
 
             }
             // $list_cursos = Curso::allCursos();
             // $id = $_GET['id'];
-            $cursoId = $_GET['id'];
-            // var_dump($cursoId);
-            $cursoActual = Curso::findCurso($cursoId);
+            // $cursoId = $_GET['id'];
+            // // var_dump($cursoId);
+            // $cursoActual = Curso::findCurso($cursoId);
 
-            // llamamos a la función renderView quien recibe una vista y parámetros a utilizar en la vista.
-            $router->renderView("/mensaje/create", ['cursoActual' => $cursoActual]);
+            // // llamamos a la función renderView quien recibe una vista y parámetros a utilizar en la vista.
+            // $router->renderView("/mensaje/create", ['cursoActual' => $cursoActual]);
 
         }catch (\Exception $ex){
 

@@ -92,6 +92,15 @@ class Curso{
     }
 
 
+    // public function getChatId()
+    // {
+    //     $cursoId = $this->id;
+  
+    //     // echo ($this->findChat($cursoId)); 
+    //     return $this->findChat($this->id);
+    // }
+
+
     // Recibe los valores del nuevo elemento y los envía a la DB para agregarlo.
     public static function create($codigo, $nombre, $grado, $dia_semana, $hora_inicio,  $hora_fin){
         try{
@@ -243,6 +252,44 @@ class Curso{
             throw new \Exception($error[1]);
         }
     }
+
+        // Busca un elemento en específico con el id.
+        // public function findChat($idCurso){
+        //     try{
+        //         $list_chats = [];
+        //         // realiza a conexión con la DB.
+        //         $connection = DBConnection::createConnection();
+    
+        //         // Prepara la consulta a la base de datos.
+        //         $sql = $connection->prepare("SELECT * FROM buscarchat(?)");
+    
+        //         // Se le indican los parámetros de la consulta.
+        //         $sql->execute(array($idCurso));
+    
+        //         // Se crea un objeto formato Json
+        //         // $chat = $sql->fetch();
+    
+                                
+        //         $list_chats[] = $sql->fetchAll();
+                
+        //         // var_dump($idCurso);
+        //         // Crea un objeto y lo retorna al controlador.
+               
+        //         // REVISAR BIEN xD
+        //         $chatId = $list_chats[0][0][0];
+               
+               
+        //         return $chatId;
+    
+        //     }catch(\Exception $ex){
+    
+        //         // La base de datos envía la exception entre los símolos $ por lo que se realiza un explode para obtener el mensaje.
+        //         $error = explode("$", $ex->getMessage());
+    
+        //         // Se crea la exception con el mensaje de error de la DB. El formato es [$,texto separado, $]
+        //         throw new \Exception($error[1]);
+        //     }
+        // }
 
 }
 
