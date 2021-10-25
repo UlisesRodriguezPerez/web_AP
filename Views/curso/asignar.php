@@ -7,7 +7,7 @@
 <!-- content -->
 <div class="content">
 
-    <form action="/curso/asignar" method="post">
+    <form action="/docente/asignar" method="post">
 
         <!-- element details -->
         <div class="element-details">
@@ -36,13 +36,24 @@
                 </select> <!-- end of select -->
             </div> <!-- end of input box -->
 
+           
+
             <!-- input box -->
             <div class="input-box">
-
-                <a href="/docente/asignar?id=<?php echo $docente->getIdDocente()?>&idCurso=<?php echo $cursoId?> " class="btn">Asignar</a>
+            <!-- input box -->
+            <div class="input-box">
+                <input type="text" name="cursoId" id="cursoId" value="<?php echo $cursoId; ?>" style="display: none">
+            </div> <!-- end of input box -->
+            <div class="button">
+                <br>
+            <input type="submit" value="Asignar">
+            <!-- <a href="/curso">BACK Provisional</a> -->
+        </div>
+                <!-- <a href="/docente/asignar?id=<?php echo $docente->getIdDocente()?>&idCurso=<?php echo $cursoId?> " class="btn">Asignar</a> -->
 
             </div> <!-- end of input box -->
         </div><!-- end of element details -->
+    </form> <!-- enf of form -->
 
         <br>
         <div><h2>Estudiantes</h2></div>
@@ -81,10 +92,10 @@
         </table> <!-- end table -->
 
         <div class="button">
-            <input type="submit" value="Back">
-            <a href="/curso">BACK Provisional</a>
+            <!-- <input type="submit" value="Back"> -->
+            <a href="/curso" class="btn btn-cancel grey">BACK</a>
         </div>
 
-    </form> <!-- enf of form -->
+    <!-- </form> enf of form -->
 </div> <!-- end of content -->
 <!-- </div> end of container -->

@@ -208,15 +208,16 @@ class DocenteController{
 
     public static function asignarACurso(Router $router){
        try{
+            if($_POST){
+                $idDocente = $_POST['profesorId'];
+                $idCurso = $_POST['cursoId'];
+                var_dump($idCurso);
+                Docente::asignarACurso($idDocente, $idCurso);
+                header("Location: /curso");
+                exit;
+            }
+                
 
-            $idDocente = $_GET['id'];
-            $idCurso = $_GET['idCurso'];
-//            var_dump($idCurso);
-
-            Docente::asignarACurso($idDocente, $idCurso);
-            header("Location: /curso/asignar?id=$idCurso");
-
-//
        }catch (\Exception $ex){
 
            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
