@@ -31,10 +31,11 @@
           </div> <!-- end of input box -->
 
             <!-- input box -->
-            <div class="input-box">
+            <!-- <div class="input-box">
                 <span class="details">Password</span>
                 <input type="text" placeholder="Enter password" name="password" id="password" required>
-            </div> <!-- end of input box -->
+            </div>  -->
+              <!-- end of input box -->
 
             <!-- input box -->
             <div class="input-box">

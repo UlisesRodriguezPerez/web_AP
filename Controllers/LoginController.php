@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\Login;
 use App\Router;
 use App\Config;
+use App\Models\RandPassword;
+use App\Models\SendEmail;
 
 class LoginController{
 
@@ -25,13 +27,12 @@ class LoginController{
                 $correo = $_POST['correo'];
                 $password = $_POST['password'];
 
-                
-                // La base de datos retorna un 1 o un 0 según el rol.
-                // $router->renderView("/gogogo");
                 $access = Login::findLogin($correo, $password);
-//                echo $access->nombre;
-//                var_dump($access);
-                // var_dump ($access);
+                
+                // $pass = RandPassword::newPassword();
+                // $correo = new SendEmail();
+                // $correo->sendEmail("proyecto2.ap.web@gmail.com", "prueba", $copia = null, $archivo = null, 
+                //                     $subject = "encabezado", $body = $correo->bodyMail("fer99@gmail.com", $pass));
 
                 // role admin
                 if($access->id == "1"){

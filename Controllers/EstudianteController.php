@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Estudiante;
 use App\Models\Grado;
+use App\Models\SendEmail;
+use App\Models\RandPassword;
 use App\Router;
 
 
@@ -41,7 +43,8 @@ class EstudianteController{
 
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];
-                $password = $_POST['password'];
+                // $password = $_POST['password'];
+                $password = RandPassword::newPassword();
                 $segundoApellido = $_POST['segundoApellido'];
                 $cedula = $_POST['cedula'];
                 $correo = $_POST['correo'];
@@ -49,6 +52,10 @@ class EstudianteController{
 
 
                 Estudiante::create($nombre, $apellido, $segundoApellido, $password, $cedula, $correo, $gradoId);
+
+                //  Envía un email con los credenciales
+                $correoCredenciales = new SendEmail();
+                $correoCredenciales->sendEmail("$correo", "Credenciales", null, null, "Hola bienvenida/o", $correoCredenciales->bodyMail($correo, $password));
 
                 // finalmente volvemos a la vista index del elemento.
                 header("Location: /estudiante");

@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Docente;
-use App\Models\Curso;
+use App\Models\RandPassword;
+use App\Models\SendEmail;
 use App\Router;
 
 
@@ -42,12 +43,17 @@ class DocenteController{
                  $nombre = $_POST['nombre'];
                  $apellido = $_POST['apellido'];
                  $segundoApellido = $_POST['segundoApellido'];
-                 $password = $_POST['password'];
+                //  $password = $_POST['password'];
+                 $password = RandPassword::newPassword();
                  $cedula = $_POST['cedula'];
                  $correo = $_POST['correo'];
 
 
                  Docente::create($nombre, $apellido, $segundoApellido, $password, $cedula, $correo);
+
+                //  Envía un email con los credenciales
+                $correoCredenciales = new SendEmail();
+                $correoCredenciales->sendEmail("$correo", "Credenciales", null, null, "Hola bienvenida/o", $correoCredenciales->bodyMail($correo, $password));
 
                  // finalmente volvemos a la vista index del elemento.
                  header("Location: /docente");
