@@ -16,21 +16,21 @@ class Config{
      static $user = 'AP';
 
     // Contraseña para acceder a la base de datos en postgresql
-    // static $password = '';
-     static $password = '';
+    // static $password = 'Ulises';
+    static $password = '12345678';
 
     // Puerto de la instancia de postgresql (normalmente es 5432)
     // static $port = '5432';
-     static $port = '';
+    static $port = '17054';
 
 
      // DATOS PARA EL ENVÍO DE CORREOS.
 
-     static $hostMail = ".com";
+     static $hostMail = "smtp.gmail.com";
 
-     static $usernameMail = "pro.com";
+     static $usernameMail = "proyecto2.ap.web@gmail.com";
 
-     static $passwordMail = "";
+     static $passwordMail = "Proyecto2AP";
 
      static $portMail = 587;
 
