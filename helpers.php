@@ -51,3 +51,7 @@ function currentURL_linuxWindows(){
     // }
     
 }
+
+function randomPassword(){
+    $characters = [""];
+}

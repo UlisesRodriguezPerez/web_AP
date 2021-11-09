@@ -3,10 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\Docente;
+use App\Models\Estudiante;
 use App\Models\RandPassword;
 use App\Models\SendEmail;
 use App\Router;
 
+// require_once '../vendor'
+use Dompdf\Dompdf;
+
+
+// require 'Files/';
+require 'vendor/autoload.php';
 
 class DocenteController{
 
@@ -265,28 +272,56 @@ class DocenteController{
         }
      }
 
-        // Vista principal del elemento.
-        // public static function cursos(Router $router){
-        //     try{
-    
-        //         // Obtenemos todos los elementos desde el Model para después mostrarlos en la vista (table).
-        //         $list_cursos = Curso::allCursos();
-        //         $router->renderView("/curso/index", ['list_cursos' => $list_cursos]);
-    
-        //     } catch (\Exception $ex) {
-    
-        //         // Se recibe el error y se envía a la vista.
-        //         $error = $ex->getMessage();
-    
-        //         // iniciamos el proceso session para poder asignar la variables error y verificar en la vista.
-        //         session_start();
-        //         $_SESSION['error'] = $error;
-    
-        //         // redirecionamosa la vista principal.
-        //         header("Location: /");
-        //     }
-        // }
-    
+     public static function generarPDF(Router $router){
+        try{
+            if($_POST){
+                $idCurso = $_POST["cursoId"];
+                $idDocente = $_POST["idDocente"];
+                $rutaGuardar = "Files/";
+                $nombreArchivo = "listadoAlumnos.pdf";
+                $domPDF = new Dompdf();
+                $html = $_SESSION["pdf"];
+                $options = $domPDF->getOptions();
+                $options->set(array("isRemoteEnabled" => true));
+                $domPDF->setOptions($options);
+                $domPDF->loadHtml($html);
+                $domPDF->setPaper("letter");
+
+                $domPDF->render();
+
+                $output = $domPDF->output();
+                file_put_contents($rutaGuardar.$nombreArchivo, $output);
+                // $domPDF->stream("listadoAlumnos.pdf", array("Attachment" => false));
+                
+                $docente = Docente::findDocente($idDocente);
+                $correo = $docente->getCorreo();
+                //  Envía un email con los credenciales
+                $enviarPDF = new SendEmail();
+                $enviarPDF->sendEmail($correo, "PDF", null, $rutaGuardar.$nombreArchivo, "Estudiantes", "Listado Estudiantes.");
+                header("Location: /curso");
+                exit;
+            }
+            $cursoId = $_GET['id'];
+            $idDocente = $_GET["idDocente"];
+            $list_estudiantes = Estudiante::estudiantesPorCurso($cursoId);
+
+            $router->renderView("curso/pdfDocente", ['list_estudiantes'=>$list_estudiantes, "cursoId"=>$cursoId, "idDocente"=>$idDocente]);
+            
+
+
+        }catch (\Exception $ex){
+
+            // En caso de ocurrir algun problema se captura la excepcion y se redirige al index.
+            $error = $ex->getMessage();
+
+            // iniciamos el proceso session start para poder asignar la variable error.
+            session_start();
+            $_SESSION['error'] = $error;
+
+            // redirigimos a la vista index donde se mostrará el error ocurrido.
+            header("Location: /curso");
+        }
+    }
 
 }
 

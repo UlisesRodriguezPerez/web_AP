@@ -31,6 +31,8 @@ $router->get('/curso/find', [CursosController::class, 'find']);
 $router->post('/curso/find', [CursosController::class, 'find']);
 $router->get('/curso/asignar', [CursosController::class, 'asignar']);
 $router->post('/curso/asignar', [CursosController::class, 'asignar']);
+$router->get('/curso/pdfDocente', [DocenteController::class, 'generarPDF']);
+$router->post('/curso/pdfDocente', [DocenteController::class, 'generarPDF']);
 
 // noticia
 $router->get('/noticia', [NoticiaController::class, 'index']);

@@ -86,7 +86,7 @@
                 <input type="submit" value="Calificar">
                 <!-- <a href="/curso">BACK Provisional</a> -->
             </div>
-          </form> <!-- enf of form -->
+        </form> <!-- enf of form -->
           <div><h2>Estudiantes</h2></div>
           <!-- table -->
           <table class="table">
@@ -135,6 +135,15 @@
             <!-- <input type="submit" value="Back"> -->
               <a href="/curso" class="btn btn-cancel grey">BACK</a>
           </div>
+          <?php
+            // SOLO EL ADMIN TIENE ESTE ACCESSO.
+            if ($_SESSION['user'] == 'administrador') { ?>
+                <div class="button">
+                <!-- <input type="submit" value="Back"> -->
+                <a href="/curso/pdfDocente?id=<?php echo $cursoId ?>&idDocente=<?php echo $docente->getId() ?>" class="btn btn-cancel grey">Generar PDF</a>
+          </div>
+            <?php } ?>  
+          
         
       
     </div> <!-- end of content -->
